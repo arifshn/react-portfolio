@@ -1,32 +1,38 @@
-body {
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
+/* src/index.css */
+
+/* Universal selector to prevent any element from causing horizontal overflow */
+* {
+  max-width: 100vw; /* Viewport genişliğine göre maksimum genişlik */
   box-sizing: border-box;
-  background-color: var(--body-bg-color) !important;
-  color: var(--text-color) !important;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
+/* Global CSS Variables: Define light and dark mode colors */
 :root {
-  --body-bg-light: #f8f9fa;
-  --text-light: #212529;
-  --card-bg-light: #ffffff;
-  --body-bg-dark: #222831;
-  --text-dark: #eeeeee;
-  --card-bg-dark: #2c3137;
-  --primary-color: #00adb5;
-  --secondary-color: #393e46;
+  /* Açık Tema Renkleri */
+  --body-bg-light: #f8f9fa; /* Açık tema genel arka plan */
+  --text-light: #212529; /* Açık tema yazı rengi */
+  --card-bg-light: #ffffff; /* Açık tema kart arka planı */
+
+  /* Koyu Tema Renkleri */
+  --body-bg-dark: #222831; /* Koyu tema genel arka plan */
+  --text-dark: #eeeeee; /* Koyu tema yazı rengi */
+  --card-bg-dark: #2c3137; /* Koyu tema kart arka planı (daha belirgin) */
+
+  /* Ortak Renkler (Temadan bağımsız) */
+  --primary-color: #00adb5; /* Ana vurgu rengi */
+  --secondary-color: #393e46; /* İkincil renk (bazı öğeler için) */
+
+  /* Home Sayfası Arka Plan Gradyan Değişkenleri */
   --gradient-start-light: #00adb5;
   --gradient-end-light: #393e46;
-  --gradient-start-dark: #00adb5;
-  --gradient-end-dark: #222831;
-  --navbar-toggler-filter: 0;
+  --gradient-start-dark: #00adb5; /* Koyu temada başlangıç rengi */
+  --gradient-end-dark: #222831; /* Koyu temada bitiş rengi */
+
+  /* Hamburger Menü İkon Filtresi */
+  --navbar-toggler-filter: 0; /* Varsayılan: Açık tema için siyah ikon */
 }
 
+/* Tema Uygulaması (body[data-theme] özelliği ile) */
 body[data-theme="light"] {
   --body-bg-color: var(--body-bg-light);
   --text-color: var(--text-light);
@@ -38,22 +44,67 @@ body[data-theme="light"] {
 body[data-theme="dark"] {
   --body-bg-color: var(--body-bg-dark);
   --text-color: var(--text-dark);
-  --navbar-toggler-filter: 1;
+  --navbar-toggler-filter: 1; /* Koyu tema için beyaz ikon */
   --current-gradient-start: var(--gradient-start-dark);
   --current-gradient-end: var(--gradient-end-dark);
   --card-bg-color: var(--card-bg-dark);
 }
 
-.hidden-on-load {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+/* -- Genel Sıfırlamalar ve Temel Stiller -- */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Kutu modelini border-box olarak ayarlar */
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Poppins", sans-serif; /* Modern ve okunaklı bir font */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(
+    --body-bg-color
+  ) !important; /* Tema değişkeni ile arka plan rengi */
+  color: var(--text-color) !important; /* Tema değişkeni ile yazı rengi */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Tema geçişleri için yumuşak animasyon */
+  min-height: 100vh; /* Sayfanın minimum yüksekliği */
+  display: flex;
+  flex-direction: column; /* MainLayout'un dikeyde esnemesi için */
+  overflow-x: hidden; /* Yatay kaydırmayı engelle */
+}
+
+html {
+  scroll-behavior: smooth; /* Sayfa içi link tıklamalarında yumuşak kaydırma */
+  overflow-x: hidden; /* HTML elementi için de yatay kaydırmayı engelle */
+}
+
+a {
+  text-decoration: none;
+  color: inherit; /* Linklerin rengini üst öğeden miras alır */
+}
+
+/* Intersection Observer Animasyonları İçin Başlangıç Durumu */
+.hidden-on-load {
+  opacity: 0;
+  visibility: hidden; /* Ekran okuyucularından da gizle */
+  transition: opacity 0.5s ease, visibility 0.5s ease; /* Yumuşak geçiş */
+}
+
+/* Animate.css animasyonları başladığında öğeleri görünür yap */
 .animate__animated {
   visibility: visible;
 }
 
+/* Kart Arka Plan Renkleri (About, Projects, Contact) */
 .bg-light-card {
   background-color: var(--card-bg-light) !important;
   transition: background-color 0.3s ease;
@@ -64,6 +115,7 @@ body[data-theme="dark"] {
   transition: background-color 0.3s ease;
 }
 
+/* Home Sayfası Arka Plan Efekti */
 .modern-background {
   position: absolute;
   top: 0;
@@ -83,6 +135,7 @@ body[data-theme="dark"] {
   transition: background 0.5s ease;
 }
 
+/* Özel Buton Stilleri (Home Sayfası) */
 .custom-btn-primary {
   background-color: var(--primary-color) !important;
   border-color: var(--primary-color) !important;
@@ -111,6 +164,7 @@ body[data-theme="dark"] {
   box-shadow: 0 4px 8px rgba(0, 173, 181, 0.3);
 }
 
+/* Koyu Tema İçin custom-btn-outline */
 body[data-theme="dark"] .custom-btn-outline {
   border-color: var(--text-dark) !important;
   color: var(--text-dark) !important;
@@ -122,6 +176,7 @@ body[data-theme="dark"] .custom-btn-outline:hover {
   border-color: var(--primary-color) !important;
 }
 
+/* Sosyal Medya İkon Bağlantıları (Home & Contact) */
 .social-icon-link {
   transition: transform 0.3s ease, color 0.3s ease;
 }
@@ -131,6 +186,7 @@ body[data-theme="dark"] .custom-btn-outline:hover {
   color: var(--primary-color) !important;
 }
 
+/* Profil Resmi (About Sayfası) */
 .profile-img {
   width: 250px;
   height: 250px;
@@ -138,6 +194,7 @@ body[data-theme="dark"] .custom-btn-outline:hover {
   border: 5px solid var(--primary-color);
 }
 
+/* Yetenek Kartları (About Sayfası) */
 .skill-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -151,6 +208,7 @@ body[data-theme="dark"] .custom-btn-outline:hover {
   border-radius: 5px;
 }
 
+/* Zaman Çizelgesi (About Sayfası) */
 .timeline {
   position: relative;
   max-width: 1200px;
@@ -186,11 +244,11 @@ body[data-theme="dark"] .custom-btn-outline:hover {
   padding-right: 30px;
 }
 
+/* Koyu Tema İçin Zaman Çizelgesi Öğeleri */
 .timeline-item-dark .timeline-dot {
   background-color: var(--text-dark) !important;
   border-color: var(--primary-color) !important;
 }
-
 .timeline-item-dark .timeline-content {
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
@@ -231,6 +289,7 @@ body[data-theme="dark"] .custom-btn-outline:hover {
   font-weight: 600;
 }
 
+/* Küçük Ekranlar İçin Zaman Çizelgesi Düzenlemesi */
 @media (max-width: 768px) {
   .timeline::after {
     left: 18px;
@@ -251,6 +310,7 @@ body[data-theme="dark"] .custom-btn-outline:hover {
   }
 }
 
+/* Projeler Bölümü Geliştirmeleri */
 .project-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
@@ -276,6 +336,7 @@ body[data-theme="dark"] .custom-btn-outline:hover {
   margin-bottom: 0.75rem;
 }
 
+/* Proje kartı içindeki genel metin rengi (koyu tema) */
 body[data-theme="dark"] .project-card .card-text {
   color: var(--text-dark) !important;
 }
@@ -289,6 +350,7 @@ body[data-theme="dark"] .project-card .card-text {
   transition: all 0.2s ease;
 }
 
+/* Koyu Tema İçin Teknoloji Etiketleri */
 body[data-theme="dark"] .tech-badge {
   background-color: #00adb5 !important;
   color: #222831 !important;
@@ -317,7 +379,9 @@ body[data-theme="dark"] .tech-badge {
   box-shadow: 0 4px 8px rgba(0, 173, 181, 0.2);
 }
 
+/* GitHub Butonu İçin Koyu Tema Uyumu */
 .custom-project-btn.btn-outline-light {
+  /* Koyu temada bu aktif olur */
   border-color: var(--text-dark) !important;
   color: var(--text-dark) !important;
   background-color: transparent !important;
@@ -331,7 +395,9 @@ body[data-theme="dark"] .tech-badge {
   box-shadow: 0 4px 8px rgba(0, 173, 181, 0.2);
 }
 
+/* Açık Tema İçin GitHub Butonu */
 .custom-project-btn.btn-outline-dark {
+  /* Açık temada bu aktif olur */
   border-color: var(--text-light) !important;
   color: var(--text-light) !important;
   background-color: transparent !important;
@@ -345,6 +411,7 @@ body[data-theme="dark"] .tech-badge {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Filtre Butonları (Projects Sayfası) */
 .filter-btn {
   border: 1px solid var(--primary-color) !important;
   color: var(--primary-color) !important;
@@ -363,6 +430,7 @@ body[data-theme="dark"] .tech-badge {
   box-shadow: 0 4px 8px rgba(0, 173, 181, 0.3);
 }
 
+/* Koyu Tema Filtre Butonları */
 body[data-theme="dark"] .filter-btn {
   border-color: var(--text-dark) !important;
   color: var(--text-dark) !important;
@@ -378,7 +446,9 @@ body[data-theme="dark"] .filter-btn.active-filter {
   border-color: #00adb5 !important;
 }
 
+/* İletişim Bölümü Geliştirmeleri */
 .contact-info-card {
+  /* Arka plan rengi bg-light-card veya bg-dark-card tarafından yönetilecek */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -386,6 +456,7 @@ body[data-theme="dark"] .filter-btn.active-filter {
   margin-bottom: 0.5rem;
 }
 
+/* Form Giriş Alanları Stilleri */
 .form-control {
   background-color: white !important;
   border: 1px solid #ced4da !important;
@@ -396,9 +467,10 @@ body[data-theme="dark"] .filter-btn.active-filter {
 .form-control:focus {
   border-color: var(--primary-color) !important;
   box-shadow: 0 0 0 0.25rem rgba(0, 173, 181, 0.25) !important;
-  background-color: white !important;
+  background-color: white !important; /* Odaklandığında arka plan beyaz kalmalı */
 }
 
+/* Koyu Tema İçin Form Giriş Alanları */
 .form-control-dark {
   background-color: #455a64 !important;
   border: 1px solid #5a6a74 !important;
@@ -415,6 +487,7 @@ body[data-theme="dark"] .filter-btn.active-filter {
   box-shadow: 0 0 0 0.25rem rgba(0, 173, 181, 0.25) !important;
 }
 
+/* Özel İletişim Butonu */
 .custom-contact-btn {
   background-color: var(--primary-color) !important;
   border-color: var(--primary-color) !important;
@@ -430,26 +503,30 @@ body[data-theme="dark"] .filter-btn.active-filter {
   box-shadow: 0 6px 12px rgba(0, 173, 181, 0.3);
 }
 
+/* Uyarı Mesajları */
 .alert {
   font-weight: 500;
 }
 
+/* Navbar Geliştirmeleri */
 .modern-navbar {
   transition: background-color 0.3s ease, color 0.3s ease;
-  z-index: 1030;
+  z-index: 1030; /* Navbar'ın diğer elementlerin üstünde kalmasını sağlar */
   padding-top: 1rem;
   padding-bottom: 1rem;
+  /* position: relative; /* Bu kural kaldırıldı, Bootstrap'in fixed-top'u yeterli */
 }
 
 .modern-navbar .navbar-brand {
   font-weight: 700;
-  font-size: 1.8rem;
-  color: var(--primary-color) !important;
+  font-size: 3rem; /* LOGO BOYUTU */
+  color: var(--primary-color) !important; /* İkon rengini garanti et */
 }
 
+/* NavLink Stilleri */
 .nav-link {
   font-weight: 500;
-  color: var(--text-color) !important;
+  color: var(--text-color) !important; /* Tema değişkeninden renk al */
   padding: 0.5rem 1rem;
   transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
   position: relative;
@@ -460,6 +537,7 @@ body[data-theme="dark"] .filter-btn.active-filter {
   transform: translateY(-2px);
 }
 
+/* Aktif NavLink Alt Çizgi Efekti */
 .active-nav-link {
   color: var(--primary-color) !important;
   font-weight: 700;
@@ -479,29 +557,58 @@ body[data-theme="dark"] .filter-btn.active-filter {
   transition: width 0.3s ease, opacity 0.3s ease;
 }
 
+/* Küçük Ekranlarda Aktif Çizginin Görünmemesi veya Farklı Olması */
 @media (max-width: 991.98px) {
+  /* Bootstrap'in lg breakpoint'i */
   .nav-link.active-nav-link::after {
     width: 0 !important;
     opacity: 0 !important;
   }
+
+  /* Mobil menüdeyken linklerin hizalanması */
   .navbar-nav {
     text-align: center;
     width: 100%;
     padding-top: 1rem;
+    /* Mobil menü içindeki ul'nin flex-grow'ını sıfırla ve ortala */
+    flex-grow: unset !important;
+    justify-content: center !important; /* Mobil menü öğelerini ortala */
   }
   .navbar-nav .nav-item {
     margin-bottom: 0.5rem;
   }
+
+  /* Tema değiştirme düğmesinin bulunduğu li için mobil marjı sıfırla */
+  .navbar-nav .nav-item.ms-lg-3 {
+    margin-left: 0 !important; /* Mobil görünümde sol marjı sıfırla */
+  }
+
+  /* Navbar toggler'ı sağa yasla */
+  .navbar-toggler {
+    /* position: absolute; /* Kaldırıldı */
+    /* right: 1rem; /* Kaldırıldı */
+    /* top: 50%; /* Kaldırıldı */
+    /* transform: translateY(-50%); /* Kaldırıldı */
+    margin: 0 !important; /* Bootstrap'in varsayılan marjlarını sıfırla */
+    /* Bootstrap'in kendi flexbox davranışı ile hizalanacak */
+  }
+  .modern-navbar .navbar-brand {
+    margin-right: auto !important; /* Logoyu sola it, toggler'ı sağa itmek için */
+  }
 }
 
+/* Hamburger Toggler İkon Rengi (dark/light tema için) */
 .navbar-toggler {
   border-color: rgba(0, 0, 0, 0.1) !important;
 }
 
 .navbar-toggler-icon {
   filter: invert(var(--navbar-toggler-filter, 0)) !important;
+  /* Animasyonu kaldırmak için transition'ı sıfırlayabiliriz */
+  transition: none;
 }
 
+/* Footer Geliştirmeleri */
 .footer-modern {
   transition: background-color 0.3s ease, color 0.3s ease;
   font-size: 0.95em;
@@ -528,6 +635,7 @@ body[data-theme="dark"] .filter-btn.active-filter {
   transform: translateX(5px);
 }
 
+/* Footer Sosyal Medya İkonları */
 .footer-social-icon {
   color: var(--text-color) !important;
   transition: all 0.3s ease;
@@ -548,6 +656,7 @@ body[data-theme="dark"] .filter-btn.active-filter {
   box-shadow: 0 4px 10px rgba(0, 173, 181, 0.3);
 }
 
+/* Koyu Tema İçin İkon Kenarlık Rengi */
 body[data-theme="dark"] .footer-social-icon {
   border-color: #eeeeee !important;
 }
@@ -556,12 +665,14 @@ body[data-theme="dark"] .footer-social-icon {
   font-size: 0.9em;
 }
 
+/* Küçük Ekranlar İçin Responsive Ayarlar */
 @media (max-width: 767.98px) {
   .footer-title {
     margin-top: 1.5rem;
   }
 }
 
+/* Animate.css Özel Gecikme Sınıfları */
 .animate__delay-0-2s {
   animation-delay: 0.2s;
 }

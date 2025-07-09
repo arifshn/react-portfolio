@@ -138,15 +138,15 @@ export default function About() {
             />
           </div>
           <div className="col-md-8 p-4">
-            <h2 className="mb-3 display-5 fw-bold animate__animated animate__fadeInRight animate__delay-1s">
+            <h2 className="mb-3 display-5 fw-bold animate__animated animate__fadeInRight animate__delay-0-2s">
               Merhaba, ben Arif!
             </h2>
-            <p className="lead animate__animated animate__fadeInRight animate__delay-1-5s">
+            <p className="lead animate__animated animate__fadeInRight animate__delay-0-2s">
               Ben bir <strong>Frontend Developer</strong>'ım. React, JavaScript
               (ES6+), HTML & CSS gibi modern web teknolojileriyle kullanıcı
               dostu, etkileşimli ve performansı yüksek arayüzler geliştiriyorum.
             </p>
-            <p className="animate__animated animate__fadeInRight animate__delay-2s">
+            <p className="animate__animated animate__fadeInRight animate__delay-0-5s">
               Üniversitede <strong>Yönetim Bilişim Sistemleri</strong> eğitimimi
               tamamladım, edindiğim teorik bilgileri freelance projeler ve
               kişisel uygulamalarla pratiğe döküyorum. Kod yazmak, sürekli yeni
@@ -154,7 +154,7 @@ export default function About() {
               pozitif bir etki yaratması benim için büyük bir tutku ve
               motivasyon kaynağı.
             </p>
-            <p className="animate__animated animate__fadeInRight animate__delay-2-5s">
+            <p className="animate__animated animate__fadeInRight animate__delay-0-7s">
               Hedefim, kullanıcı deneyimini her zaman merkeze alan estetik ve
               işlevsel web uygulamaları geliştirmek, yazılım geliştirme
               süreçlerinde en iyi pratikleri uygulamak ve özellikle **DevOps**
@@ -165,7 +165,7 @@ export default function About() {
           </div>
         </div>
 
-        <h3 className="mb-4 text-center animate__animated animate__fadeInDown animate__delay-3s">
+        <h3 className="mb-4 text-center animate__animated animate__fadeInDown animate__delay-0-5s">
           Yetenekler
         </h3>
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
@@ -174,12 +174,12 @@ export default function About() {
           ))}
         </div>
 
-        <h3 className="mb-4 text-center animate__animated animate__fadeInDown animate__delay-4s">
+        <h3 className="mb-4 text-center animate__animated animate__fadeInDown animate__delay-1-1s">
           Tecrübe & Eğitim
         </h3>
         <div className="timeline">
           <div
-            className={`timeline-item animate__animated animate__fadeInUp animate__delay-4-5s ${
+            className={`timeline-item animate__animated animate__fadeInUp animate__delay-1-9s${
               isDark ? "timeline-item-dark" : ""
             }`}
           >
@@ -208,7 +208,7 @@ export default function About() {
           </div>
 
           <div
-            className={`timeline-item animate__animated animate__fadeInUp animate__delay-5s ${
+            className={`timeline-item animate__animated animate__fadeInUp animate__delay-1-7s ${
               isDark ? "timeline-item-dark" : ""
             }`}
           >

@@ -23,13 +23,13 @@ export default function Home() {
         >
           Merhaba, Ben <span className="text-primary">Arif Şahin</span>
         </h1>
-        <p className="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s">
+        <p className="lead mb-4 animate__animated animate__fadeInUp animate__delay-0-7s">
           Yaratıcı ve kullanıcı odaklı web deneyimleri geliştiren bir Front-End
           Developer'ım. Modern teknolojilerle estetik ve işlevsel arayüzler
           tasarlamayı seviyorum.
         </p>
 
-        <div className="d-flex justify-content-center gap-3 animate__animated animate__fadeInUp animate__delay-2s">
+        <div className="d-flex justify-content-center gap-3 animate__animated animate__fadeInUp animate__delay-1-1s">
           <a
             href="/Projects"
             className="btn btn-primary btn-lg rounded-pill px-4 py-2 custom-btn-primary"
@@ -44,7 +44,7 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="mt-5 animate__animated animate__fadeInUp animate__delay-3s">
+        <div className="mt-5 animate__animated animate__fadeInUp animate__delay-1-5s">
           <a
             href="https://github.com/arifshn"
             target="_blank"

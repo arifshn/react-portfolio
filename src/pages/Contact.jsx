@@ -58,7 +58,7 @@ export default function Contact() {
         </h1>
 
         <div className="row justify-content-center g-4">
-          <div className="col-lg-5 col-md-6 animate__animated animate__fadeInLeft animate__delay-1s">
+          <div className="col-lg-5 col-md-6 animate__animated animate__fadeInLeft animate__delay-0-3s">
             <div
               className={`contact-info-card p-5 rounded shadow-lg h-100 d-flex flex-column justify-content-between ${
                 isDark ? "bg-dark-card" : "bg-light-card"
@@ -155,7 +155,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="col-lg-7 col-md-6 animate__animated animate__fadeInRight animate__delay-1-5s">
+          <div className="col-lg-7 col-md-6 animate__animated animate__fadeInRight animate__delay-0-3s">
             <form
               onSubmit={handleSubmit}
               className={`p-5 rounded shadow-lg h-100 ${
